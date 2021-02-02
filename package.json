@@ -2,13 +2,16 @@
   "name": "random-pisum",
   "version": "0.0.0-development",
   "description": "Get random wild animal names",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "commit": "cz",
-    "test": "istanbul cover node_modules/mocha/bin/_mocha src/index.test.js",
+    "test": "mocha src/index.test.js --require babel-core/register",
+    "cover": "nyc npm t",
     "semantic-release": "semantic-release",
+    "pre-build": "rimraf dist",
+    "build": "babel --copy-files --out-dir dist --ignore *.test.js src",
     "report-coverage": "./coverage/lcov.info | codecov",
-    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100"
+    "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100"
   },
   "repository": {
     "type": "git",
@@ -27,16 +30,21 @@
   },
   "homepage": "https://github.com/Shashank-AV/random-animal-names#readme",
   "dependencies": {
+    "babel-preset-stage-0": "6.24.1",
     "commitizen": "4.2.3",
     "unique-random-array": "2.0.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "7.12.11",
+    "babel-cli": "6.26.0",
     "chai": "4.2.0",
     "codecov.io": "0.1.6",
     "cz-conventional-changelog": "3.3.0",
     "ghooks": "2.0.4",
     "istanbul": "0.4.5",
     "mocha": "8.2.1",
+    "nyc": "15.1.0",
+    "rimraf": "3.0.2",
     "semantic-release": "^17.3.7"
   },
   "config": {
@@ -44,7 +52,13 @@
       "path": "./node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm run test && npm run check-coverage"
+      "pre-commit": "npm run cover && npm run check-coverage"
+    },
+    "babel": {
+      "presets": [
+        "env",
+        "stage-0"
+      ]
     }
   }
 }
