@@ -1,0 +1,27 @@
+{
+  "name": "random-animal-names",
+  "version": "1.0.0",
+  "description": "Get random animal names",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shashank-AV/random-animal-names.git"
+  },
+  "keywords": [
+    "random",
+    "animal",
+    "names"
+  ],
+  "author": "shashank.a.v <shashank.a.v@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Shashank-AV/random-animal-names/issues"
+  },
+  "homepage": "https://github.com/Shashank-AV/random-animal-names#readme",
+  "dependencies": {
+    "unique-random-array": "2.0.0"
+  }
+}
