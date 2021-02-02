@@ -1,12 +1,12 @@
 {
   "name": "random-pisum",
-  "version": "0.0.0-semantically-released",
+  "version": "0.0.0-development",
   "description": "Get random wild animal names",
   "main": "src/index.js",
   "scripts": {
     "commit": "cz",
     "test": "mocha src/index.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -31,12 +31,16 @@
   "devDependencies": {
     "chai": "4.2.0",
     "cz-conventional-changelog": "3.3.0",
+    "ghooks": "2.0.4",
     "mocha": "8.2.1",
     "semantic-release": "^17.3.7"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "pre-commit": "npm run test"
     }
   }
 }
